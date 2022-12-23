@@ -6,7 +6,6 @@ services:
     build: ./jenkins-build
     ports:
       - 8080:8080
-      - 50000:50000
     environment:
       JAVA_OPTS: -Djenkins.install.runSetupWizard=false
       JENKINS_OPTS: --argumentsRealm.roles.user=admin --argumentsRealm.passwd.admin=admin --argumentsRealm.roles.admin=admin
@@ -20,3 +19,10 @@ services:
       - 22:22
     tty: true  
   
+  python_tst1:
+    build: ./python_agent
+    ports:
+        - 5000:5000
+    expose:
+      - 22:22
+    tty: true  
